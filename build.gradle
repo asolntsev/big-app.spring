@@ -11,7 +11,8 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
-apply plugin: 'spring-boot'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
 
 jar {
     baseName = 'gs-serving-web-content'
@@ -26,9 +27,10 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
     compile("org.springframework.boot:spring-boot-devtools")
-    runtime('org.springframework:springloaded:1.2.6.RELEASE')
+    runtime('org.springframework:springloaded:1.2.8.RELEASE')
     testCompile("junit:junit")
 }
 
