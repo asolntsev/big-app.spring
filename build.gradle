@@ -27,11 +27,11 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 dependencies {
-    compile("org.springframework.boot:spring-boot-starter-web")
-    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
-    compile("org.springframework.boot:spring-boot-devtools")
-    runtime('org.springframework:springloaded:1.2.8.RELEASE')
-    testCompile("junit:junit")
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
+    implementation("org.springframework.boot:spring-boot-devtools")
+    runtimeOnly('org.springframework:springloaded:1.2.8.RELEASE')
+    testImplementation("junit:junit")
 }
 
 idea {
@@ -42,9 +42,9 @@ idea {
 }
 
 task libs(type: Sync) {
-  from configurations.compile
-  from configurations.runtime
-  from configurations.testCompile
+  from configurations.compileClasspath
+  from configurations.runtimeClasspath
+  from configurations.testRuntimeClasspath
   into "$buildDir/lib"
 }
 
