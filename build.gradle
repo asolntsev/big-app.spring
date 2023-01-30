@@ -1,35 +1,32 @@
 plugins {
     id 'java'
-    id 'eclipse'
-    id 'idea'
-    id 'org.springframework.boot' version '2.6.11'
+    id 'org.springframework.boot' version '3.0.2'
+    id 'io.spring.dependency-management' version '1.1.0'
 }
 
-apply plugin: 'io.spring.dependency-management'
-
-jar {
-    baseName = 'gs-serving-web-content'
-    version =  '0.1.0'
-}
+group = 'io.github.asolntsev'
+version = '0.0.1-SNAPSHOT'
 
 repositories {
     mavenCentral()
 }
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+sourceCompatibility = '17'
+targetCompatibility = '17'
 
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter-web")
-    implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
-    implementation("org.springframework.boot:spring-boot-devtools")
-    runtimeOnly('org.springframework:springloaded:1.2.8.RELEASE')
-    testImplementation("junit:junit")
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-devtools'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    runtimeOnly 'org.springframework:springloaded:1.2.8.RELEASE'
 }
 
-idea {
-    module {
-        inheritOutputDirs = false
-        outputDir = file("$buildDir/classes/main/")
-    }
+tasks.withType(Test).configureEach {
+    useJUnitPlatform()
+    jvmArgs = ['-ea', '-Xmx128m']
+    systemProperties['file.encoding'] = 'UTF-8'
+    systemProperties['user.country'] = 'TR'
+    systemProperties['user.language'] = 'tr'
 }
