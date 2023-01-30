@@ -40,12 +40,3 @@ idea {
         outputDir = file("$buildDir/classes/main/")
     }
 }
-
-task libs(type: Sync) {
-  from configurations.compileClasspath
-  from configurations.runtimeClasspath
-  from configurations.testRuntimeClasspath
-  into "$buildDir/lib"
-}
-
-compileJava.dependsOn libs
