@@ -4,3 +4,4 @@ big-app.spring.iws
 .gradle
 build
 lib
+*.hprof
