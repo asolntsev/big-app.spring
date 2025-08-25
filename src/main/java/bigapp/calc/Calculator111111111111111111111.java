@@ -1,13 +1,24 @@
 package bigapp.calc;
 
 import bigapp.util.Util;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
+
+@RestController
 public class Calculator111111111111111111111 {
     public static Object debug() {return Util.get();}
+
+    @RequestMapping(value = "/calc/add111111111111111111111", method = GET)
+    public int greeting(@RequestParam(value="a") int a, @RequestParam(value="b") int b) {
+        return a + b;
+    }
 
     private static void sort(List<Object> list) {
         Collections.sort(list, new Comparator<Object>() {

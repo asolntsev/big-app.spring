@@ -1,13 +1,31 @@
 package bigapp.calc;
 
+import bigapp.services.CalculatorService4;
 import bigapp.util.Util;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
+
+@RestController
 public class Calculator1111 {
+    private final CalculatorService4 service;
+
+    Calculator1111(CalculatorService4 service) {
+        this.service = service;
+    }
+
     public static Object debug() {return Util.get();}
+
+    @RequestMapping(value = "/calc/add1111", method = GET)
+    public int greeting(@RequestParam(value="a") int a, @RequestParam(value="b") int b) {
+        return service.add(a, b);
+    }
 
     private static void sort(List<Object> list) {
         Collections.sort(list, new Comparator<Object>() {

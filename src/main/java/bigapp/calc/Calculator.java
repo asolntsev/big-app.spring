@@ -1,5 +1,6 @@
 package bigapp.calc;
 
+import bigapp.services.CalculatorService0;
 import bigapp.util.Util;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,11 +14,17 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @RestController
 public class Calculator {
+    private final CalculatorService0 service;
+
+    Calculator(CalculatorService0 service) {
+        this.service = service;
+    }
+
     public static Object debug() {return Util.get();}
 
     @RequestMapping(value = "/calc/add", method = GET)
     public int greeting(@RequestParam(value="a") int a, @RequestParam(value="b") int b) {
-        return a + b;
+        return service.add(a, b);
     }
 
     private static void sort(List<Object> list) {
