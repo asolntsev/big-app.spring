@@ -24,7 +24,7 @@ jobs:
       uses: gradle/gradle-build-action@v3
       with:
         arguments: build
-  
+
   auto-merge-dependabot:
     name: 🤖 Auto merge dependabot PR
     timeout-minutes: 10
