@@ -23,7 +23,7 @@ jobs:
     - name: Build with Gradle
       uses: gradle/actions/setup-gradle@v5
     - run: ./gradlew build
-    - uses: actions/upload-artifact@v6
+    - uses: actions/upload-artifact@v7
       if: always()
       with:
         name: test-report
